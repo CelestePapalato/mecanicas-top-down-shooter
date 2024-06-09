@@ -115,7 +115,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""161622a9-e7b0-4a15-8725-6c29c7e1ceb0"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=1000,y=1000)"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
@@ -126,7 +126,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""9c3b352b-9d5d-447a-92d2-c2a62a2faa48"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=2000,y=2000)"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Point"",
                     ""isComposite"": false,
@@ -137,7 +137,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""a2081173-7fc6-478b-b468-452ad3974abc"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=1000,y=1000)"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Point"",
                     ""isComposite"": false,

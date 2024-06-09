@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GamepadCursor : MonoBehaviour
 {
     [SerializeField] float _padding = 35f;
+    [SerializeField] LayerMask raycastLayers;
     [Header("Dependencies")]
     [SerializeField] PlayerInput _playerInput;
     [SerializeField] float _cursorSpeed;
@@ -60,8 +62,14 @@ public class GamepadCursor : MonoBehaviour
         AnchorCursor(newPosition);
     }
 
-    public Vector3 ScreenToWorldPoint()
+    public Vector3 GetWorldPoint()
     {
-        return _camera.ScreenToWorldPoint(_currentPosition);
+        var ray = _camera.ScreenPointToRay(_cursorTransform.position);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
+        {
+            return hit.point;
+        }
+        return Vector3.zero;
     }
 }
