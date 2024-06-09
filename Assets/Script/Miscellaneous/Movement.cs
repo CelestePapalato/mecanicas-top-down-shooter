@@ -95,7 +95,6 @@ public class Movement : MonoBehaviour
             currentMaxSpeed += acceleration * Time.fixedDeltaTime;
         }
         currentMaxSpeed = Mathf.Clamp(currentMaxSpeed, 0f, MaxSpeed);
-        Debug.Log(currentMaxSpeed);
     }
 
     private void Move()
