@@ -31,7 +31,7 @@ public class PlayerCursor : MonoBehaviour
         {
             _canvasRectTransform = _canvas.GetComponent<RectTransform>();
         }
-
+        _cursorTransform.anchoredPosition = new Vector2(Screen.width/2, Screen.height/2);
         _currentPosition = _cursorTransform.anchoredPosition;
     }
 
