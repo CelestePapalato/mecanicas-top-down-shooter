@@ -630,7 +630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _padding: 35
-  _playerInput: {fileID: 1034129064}
   _cursorSpeed: 1000
   _cursorTransform: {fileID: 529446828}
   _canvas: {fileID: 1321954409}
@@ -987,6 +986,7 @@ GameObject:
   - component: {fileID: 1657041424}
   - component: {fileID: 1657041426}
   - component: {fileID: 1657041425}
+  - component: {fileID: 1657041427}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1122,9 +1122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _directionRelatedToCamera: 1
-  _maxSpeed: 5
-  _acceleration: 5
-  _decceleration: 25
+  maxSpeed: 5
+  acceleration: 5
+  decceleration: 10
   rotationSmoothing: 0.3
 --- !u!114 &1657041426
 MonoBehaviour:
@@ -1156,6 +1156,18 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1657041427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657041419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd08c49ef0f6b63458d18df65cfc06ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1863084786
 GameObject:
   m_ObjectHideFlags: 0
