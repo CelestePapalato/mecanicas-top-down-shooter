@@ -59,4 +59,9 @@ public class GamepadCursor : MonoBehaviour
 
         AnchorCursor(newPosition);
     }
+
+    public Vector3 ScreenToWorldPoint()
+    {
+        return _camera.ScreenToWorldPoint(_currentPosition);
+    }
 }
