@@ -32,6 +32,7 @@ public class PowerUp : ScriptableObject, IBuff
         if (weapon)
         {
             weapon.FireRateBonus(_fireRateMultiplier, _buffTime);
+            weapon.DamageBonus(_damageMultiplier, _buffTime);
         }
     }
 }
