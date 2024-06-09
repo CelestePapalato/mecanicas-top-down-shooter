@@ -19,6 +19,8 @@ public class PlayerCursor : MonoBehaviour
     private Vector2 _currentPosition;
     private Vector2 _deltaVector = Vector2.zero;
 
+    public Vector2 ScreenPosition { get { return _cursorTransform.position; } }
+
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -65,6 +67,17 @@ public class PlayerCursor : MonoBehaviour
     public Vector3 GetWorldPoint()
     {
         var ray = _camera.ScreenPointToRay(_cursorTransform.position);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
+        {
+            return hit.point;
+        }
+        return Vector3.zero;
+    }
+
+    public Vector3 GetWorldPoint(Vector2 screenPoint)
+    {
+        var ray = _camera.ScreenPointToRay(screenPoint);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
         {
