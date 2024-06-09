@@ -38,14 +38,14 @@ public class Weapon : MonoBehaviour, IBuffable
         {
             return;
         }
-        StartCoroutine(controlarCadencia());
+        StartCoroutine(ControlFireRate());
         Quaternion rotation = _spawnPoint.rotation;
         Projectile projectile = Instantiate(_projectilePrefab, _spawnPoint.position, rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * shootStrength, ForceMode.Impulse);
     }
 
-    private IEnumerator controlarCadencia()
+    private IEnumerator ControlFireRate()
     {
         _canShoot = false;
         yield return new WaitForSeconds(FireRate);
@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour, IBuffable
         }
         _currentFireRateMultiplier = fireRateBonus;
         _canShoot = true;
-        StopCoroutine(controlarCadencia());
+        StopCoroutine(ControlFireRate());
         yield return new WaitForSeconds(timeLength);
         _currentFireRateMultiplier = 1;
         if (_particleSystem)
