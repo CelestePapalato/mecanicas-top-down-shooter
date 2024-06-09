@@ -9,13 +9,13 @@ public class PointerFollower : MonoBehaviour
     [SerializeField]
     [Range(0f, 0.3f)] float _movementSmoothing;
 
-    GamepadCursor pointer;
+    PlayerCursor pointer;
     Camera cam;
     Transform player;
 
     private void Awake()
     {
-        pointer = GameObject.FindGameObjectWithTag("Player Cursor").GetComponent<GamepadCursor>();
+        pointer = GameObject.FindGameObjectWithTag("Player Cursor").GetComponent<PlayerCursor>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = Vector3.zero;
         cam = Camera.main;

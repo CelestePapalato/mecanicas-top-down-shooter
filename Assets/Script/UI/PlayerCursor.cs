@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GamepadCursor : MonoBehaviour
+public class PlayerCursor : MonoBehaviour
 {
     [SerializeField] float _padding = 35f;
     [SerializeField] LayerMask raycastLayers;
