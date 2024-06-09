@@ -137,7 +137,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""id"": ""a2081173-7fc6-478b-b468-452ad3974abc"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=3000,y=3000)"",
+                    ""processors"": ""ScaleVector2(x=1000,y=1000)"",
                     ""groups"": """",
                     ""action"": ""Point"",
                     ""isComposite"": false,
