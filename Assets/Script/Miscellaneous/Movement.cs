@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private bool _mathApproximately(float n1, float n2, float tolerance)
+    private bool MathApproximately(float n1, float n2, float tolerance)
     {
         return (Mathf.Abs(n2 - n1) < tolerance);
     }
