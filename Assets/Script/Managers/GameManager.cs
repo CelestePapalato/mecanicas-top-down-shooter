@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         BestScoreUpdate?.Invoke(bestScore);
         player = Player.Instance;
         player.OnDead += PlayerDead;
+        Rest();
     }
 
     [ContextMenu("Lose Game")]

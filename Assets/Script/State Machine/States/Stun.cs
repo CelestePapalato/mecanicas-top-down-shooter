@@ -30,7 +30,15 @@ public class Stun : State
         {
             personaje = personajeActual;
         }
+        CancelInvoke(nameof(StunEnd));
         Invoke(nameof(StunEnd), stunTime);
+    }
+
+    public override void Salir()
+    {
+        base.Salir();
+        agent.speed = originalSpeed;
+        CancelInvoke(nameof(StunEnd));
     }
 
     private void StunStart()

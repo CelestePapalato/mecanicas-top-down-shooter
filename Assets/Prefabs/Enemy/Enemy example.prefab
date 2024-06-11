@@ -12,10 +12,12 @@ GameObject:
   - component: {fileID: 8907708133822668927}
   - component: {fileID: 4254700794911767849}
   - component: {fileID: 3247698291991781862}
+  - component: {fileID: -6090957836196281184}
   - component: {fileID: 4183105026200366742}
   - component: {fileID: 5900834624617883187}
   - component: {fileID: 3325398743469612901}
   - component: {fileID: 233383836429582996}
+  - component: {fileID: 2000638926750353284}
   - component: {fileID: 6908370910482441294}
   m_Layer: 13
   m_Name: Enemy example
@@ -111,6 +113,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-6090957836196281184
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568983124484659081}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!195 &4183105026200366742
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b50b7cacd41944ca5b3b5a05ed1d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathUpdateRate: 0.3
+  pathUpdateRate: 0.2
 --- !u!114 &233383836429582996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +204,21 @@ MonoBehaviour:
   stunTime: 0.5
   nextState: {fileID: 3325398743469612901}
   speedModifier: 0.46
+--- !u!114 &2000638926750353284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568983124484659081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19724a7cfca99fb40ab55d310d950e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedModifier: 5
+  speedModifierRate: 10
+  speedModifierLength: 3
 --- !u!114 &6908370910482441294
 MonoBehaviour:
   m_ObjectHideFlags: 0
