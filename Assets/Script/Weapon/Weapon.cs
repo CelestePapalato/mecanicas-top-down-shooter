@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour, IBuffable
 
     void OnShoot()
     {
-        if (!_canShoot)
+        if (!_canShoot || Time.timeScale == 0)
         {
             return;
         }

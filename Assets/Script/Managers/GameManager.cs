@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
         Enemy.EnemyDead -= ScoreUp;
     }
 
+    private void Start()
+    {
+        ScoreUpdate.Invoke(score);
+    }
+
     private void ScoreUp(int points)
     {
         points = Mathf.Max(points, 0);
