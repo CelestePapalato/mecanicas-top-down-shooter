@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         score = 0;
+        Time.timeScale = 1;
     }
 
     private void OnEnable()
@@ -48,11 +49,19 @@ public class GameManager : MonoBehaviour
         player.OnDead += PlayerDead;
     }
 
+    [ContextMenu("Lose Game")]
     private void PlayerDead()
     {
         player.OnDead -= PlayerDead;
         Time.timeScale = 0;
         OnLost?.Invoke();
+    }
+
+    [ContextMenu("Win Game")]
+    private void WinGame()
+    {
+        Time.timeScale = 0;
+        OnWin.Invoke();
     }
 
     private void ScoreUp(int points)
