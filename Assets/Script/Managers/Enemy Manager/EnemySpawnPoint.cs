@@ -40,16 +40,15 @@ public class EnemySpawnPoint : MonoBehaviour
 
         if(!spawnPoint) { return false; }
 
-        spawnPoint.Spawn(enemy);
-        
-        return true;
+        return spawnPoint.Spawn(enemy);
     }
 
-    protected void Spawn(Enemy enemy)
+    protected bool Spawn(Enemy enemy)
     {
-        if (!enemy || !canSpawn) { return; }
+        if (!enemy || !canSpawn) { return false; }
         Instantiate(enemy, transform.position, Quaternion.identity);
         StartCoroutine(Rest());
+        return true;
     }
 
     private IEnumerator Rest()
@@ -65,5 +64,15 @@ public class EnemySpawnPoint : MonoBehaviour
         int index = Random.Range(0, ActiveSpawnPoints.Count);
         EnemySpawnPoint spawnPoint = ActiveSpawnPoints[index];
         return spawnPoint;
+    }
+
+    [ContextMenu("Print active spawn points")]
+    public void PrintSpawnPoints()
+    {
+        Debug.Log("Current Spawn Points: ");
+        foreach(EnemySpawnPoint spawnPoint in ActiveSpawnPoints)
+        {
+            Debug.Log(spawnPoint.name + " | Position: " + spawnPoint.transform.position);
+        }
     }
 }

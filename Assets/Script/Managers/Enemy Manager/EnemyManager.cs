@@ -17,6 +17,7 @@ public class EnemyManager : MonoBehaviour
     private int killedEnemies = 0;
 
     private bool spawnSpecials = false;
+    private bool specialsAlreadySpawned = false;
 
     private Round currentRound;
 
@@ -37,10 +38,12 @@ public class EnemyManager : MonoBehaviour
     private void NextRound(Round round)
     {
         currentRound = round;
+        killedEnemies = 0;
         spawnedEnemies = 0;
         totalEnemyCount = round.TotalEnemyCount;
         killsToSpawnSpecial = round.KillsToSpawnSpecial;
         spawnSpecials = false;
+        specialsAlreadySpawned = false;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -68,14 +71,19 @@ public class EnemyManager : MonoBehaviour
 
             SpawnSpecials();
 
+            bool spawningSpecials = spawnedEnemies >= killsToSpawnSpecial && !specialsAlreadySpawned;
+
             if (spawnedEnemies >= totalEnemyCount)
             {
                 break;
             }
 
-            if (EnemySpawnPoint.SpawnEnemy(PickRandomEnemy()))
+            if(!spawningSpecials)
             {
-                spawnedEnemies++;
+                if (EnemySpawnPoint.SpawnEnemy(PickRandomEnemy()))
+                {
+                    spawnedEnemies++;
+                }
             }
 
             Debug.Log(spawnedEnemies);
@@ -98,6 +106,8 @@ public class EnemyManager : MonoBehaviour
                 spawnedEnemies++;
             }
         }
+
+        specialsAlreadySpawned = specialEnemyBuffer.Count == 0;
     }
 
     private Enemy PickRandomEnemy()
