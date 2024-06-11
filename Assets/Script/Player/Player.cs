@@ -6,12 +6,15 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IBuffable
 {
+    public static Player Instance { get; private set; }
+
     private Health health;
     private Weapon weapon;
     private Movement movement;
 
     private void Awake()
     {
+        Instance = this;
         weapon = GetComponentInChildren<Weapon>();
         health = GetComponentInChildren<Health>();
         movement = GetComponent<Movement>();
@@ -28,5 +31,10 @@ public class Player : MonoBehaviour, IBuffable
     {
         Vector2 input_vector = inputValue.Get<Vector2>();
         movement.Direction = input_vector;
+    }
+
+    private void OnDisable()
+    {
+        Instance = null;
     }
 }
