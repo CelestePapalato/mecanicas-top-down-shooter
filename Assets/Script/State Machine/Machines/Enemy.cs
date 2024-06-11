@@ -2,16 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Enemy : StateMachine
 {
     public static event Action<int> EnemyDead;
+    public UnityAction<Enemy> OnDead;
 
     [SerializeField] int points;
-    public UnityAction<Enemy> OnDead;
+
     Health healthComponent;
     ItemSpawner itemSpawner;
+    Animator animator;
+    NavMeshAgent agent;
+
+    float originalSpeed;
 
     protected override void Awake()
     {
@@ -23,6 +29,9 @@ public class Enemy : StateMachine
             healthComponent.Damaged += DamageReceived;
         }
         itemSpawner = GetComponent<ItemSpawner>();
+        animator = GetComponentInChildren<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        originalSpeed = agent.speed;
     }
 
     protected override void Start()
@@ -32,6 +41,8 @@ public class Enemy : StateMachine
 
     protected override void Update()
     {
+        float speedBlend = agent.speed / originalSpeed;
+        animator?.SetFloat("Speed", speedBlend);
         base.Update();
     }
 
