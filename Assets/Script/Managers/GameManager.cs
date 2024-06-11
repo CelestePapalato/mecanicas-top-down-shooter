@@ -1,20 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static event Action<int> ScoreUpdate;
+    public static event Action<int> BestScoreUpdate;
     public static event Action<Round> NextRound;
+    public static event Action OnWin;
+    public static event Action OnLost;
 
     [SerializeField] float restTime;
     [SerializeField] List<Round> rounds = new List<Round>();
 
     private int score;
+    private static int bestScore = 0;
+
+    public static int BestScore { get => bestScore; }
 
     private Round currentRound;
+
+    private Player player;
 
     private void Awake()
     {
@@ -35,28 +42,48 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ScoreUpdate.Invoke(score);
+        ScoreUpdate?.Invoke(score);
+        BestScoreUpdate?.Invoke(bestScore);
+        player = Player.Instance;
+        player.OnDead += PlayerDead;
+    }
+
+    private void PlayerDead()
+    {
+        player.OnDead -= PlayerDead;
+        Time.timeScale = 0;
+        OnLost?.Invoke();
     }
 
     private void ScoreUp(int points)
     {
         points = Mathf.Max(points, 0);
         score += points;
-        ScoreUpdate.Invoke(score);
+        if(score > bestScore)
+        {
+            bestScore = score;
+            BestScoreUpdate?.Invoke(score);
+        }
+        ScoreUpdate?.Invoke(score);
     }
 
     [ContextMenu("Next Round")]
     private void StartRound()
-    {
-        if (rounds.Count == 0) { return; }
+    {        
         currentRound = rounds[0];
         rounds.RemoveAt(0);
-        NextRound.Invoke(currentRound);
+        NextRound?.Invoke(currentRound);
         Debug.Log("Round started " + currentRound.name);
     }
 
     private void Rest()
     {
+        if (rounds.Count == 0)
+        {
+            Time.timeScale = 0;
+            OnWin.Invoke();
+            return;
+        }
         StartCoroutine(RestTime());
     }
 

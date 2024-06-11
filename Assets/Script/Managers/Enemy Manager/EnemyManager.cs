@@ -53,7 +53,7 @@ public class EnemyManager : MonoBehaviour
         killedEnemies++;
         if(killedEnemies >= totalEnemyCount)
         {
-            RoundEnd.Invoke();
+            RoundEnd?.Invoke();
         }
         if (spawnSpecials) { return; }
         spawnSpecials = killedEnemies >= killsToSpawnSpecial;
