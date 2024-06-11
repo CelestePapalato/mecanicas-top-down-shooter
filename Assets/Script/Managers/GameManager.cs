@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static event Action<int> ScoreUpdate;
+    public static event Action<Round> NextRound;
 
+    [SerializeField] float restTime;
     [SerializeField] Round[] rounds;
 
     private int score;

@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Round Data", menuName = "ScriptableObjects/Round Data", order = 1)]
 public class Round : ScriptableObject
 {
-    public static event Action NoEnemiesLeft;
-
     [SerializeField] int totalEnemyCount;
     [SerializeField] int killsToSpawnSpecial;
     [SerializeField] Enemy[] normalEnemies;
