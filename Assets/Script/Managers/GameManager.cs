@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static event Action<int> ScoreUpdate;
 
-    [SerializeField] int rounds;
-    [SerializeField] int[] enemyQuantityPerRound;
+    [SerializeField] Round[] rounds;
 
     private int score;
 
