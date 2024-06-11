@@ -43,7 +43,7 @@ public class EnemyManager : MonoBehaviour
         totalEnemyCount = round.TotalEnemyCount;
         killsToSpawnSpecial = round.KillsToSpawnSpecial;
         spawnSpecials = false;
-        specialsAlreadySpawned = false;
+        specialsAlreadySpawned = (killsToSpawnSpecial == 0 || currentRound.SpecialEnemies.Length == 0) ? true : false;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -53,9 +53,10 @@ public class EnemyManager : MonoBehaviour
         killedEnemies++;
         if(killedEnemies >= totalEnemyCount)
         {
+            currentRound = null;
             RoundEnd?.Invoke();
         }
-        if (spawnSpecials) { return; }
+        if (spawnSpecials || specialsAlreadySpawned) { return; }
         spawnSpecials = killedEnemies >= killsToSpawnSpecial;
         if (spawnSpecials)
         {
@@ -85,8 +86,6 @@ public class EnemyManager : MonoBehaviour
                     spawnedEnemies++;
                 }
             }
-
-            Debug.Log(spawnedEnemies);
         }
     }
 
