@@ -13,7 +13,6 @@ public class EnemyManager : MonoBehaviour
     private int killedEnemies = 0;
 
     private bool spawnSpecials = false;
-    private bool specialsAlreadySpawned = false;
 
     private Round currentRound;
 
@@ -38,7 +37,6 @@ public class EnemyManager : MonoBehaviour
         totalEnemyCount = round.TotalEnemyCount;
         killsToSpawnSpecial = round.KillsToSpawnSpecial;
         spawnSpecials = false;
-        specialsAlreadySpawned = false;
     }
 
     private void EnemyKilled(int points)
