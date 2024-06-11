@@ -106,10 +106,7 @@ public abstract class State : MonoBehaviour
     private void OnDisable()
     {
         if (!personaje) { return; }
-        if (personaje)
-        {
-            personaje.OnDamaged -= DañoRecibido;
-        }
+        personaje.OnDamaged -= DañoRecibido;
         personaje.CambiarEstado(null);
         isActive = false;
     }
