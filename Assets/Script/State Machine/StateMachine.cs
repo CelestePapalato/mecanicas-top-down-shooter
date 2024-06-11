@@ -57,6 +57,11 @@ public abstract class StateMachine : MonoBehaviour
         estadoActual?.Entrar(this);
     }
 
+    protected virtual void DamageReceived()
+    {
+        OnDamaged?.Invoke();
+    }
+
     private void OnEnable()
     {
         if (estadoActual)

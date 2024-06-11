@@ -1,18 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class OnDamage : MonoBehaviour
+public class OnDamage : State
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float stunTime;
+    [SerializeField] State nextState;
+
+    Rigidbody rb;
+    NavMeshAgent agent;
+
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
+        personaje = GetComponent<StateMachine>();
+        if(personaje)
+        {
+            personaje.OnDamaged += StunStart;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Entrar(StateMachine personajeActual)
     {
-        
+        if (!personaje)
+        {
+            personaje = personajeActual;
+        }
+        if(rb != null)
+        {
+            rb.isKinematic = false;
+        }
+        if(agent != null)
+        {
+            agent.enabled = false;
+        }
+        Invoke(nameof(StunEnd), stunTime);
+    }
+
+    private void StunStart()
+    {
+        personaje.CambiarEstado(this);
+    }
+
+    private void StunEnd()
+    {
+        personaje.CambiarEstado(nextState);
     }
 }

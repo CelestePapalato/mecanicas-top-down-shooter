@@ -20,6 +20,7 @@ public class Enemy : StateMachine
         if (healthComponent)
         {
             healthComponent.NoHealth += Dead;
+            healthComponent.Damaged += DamageReceived;
         }
         itemSpawner = GetComponent<ItemSpawner>();
     }
@@ -40,6 +41,11 @@ public class Enemy : StateMachine
         Destroy(gameObject);
         EnemyDead.Invoke(points);
         //GameManager.instance.AddPoints(points);
+    }
+
+    private void DamageReceived(int health, int maxHealth)
+    {
+        DamageReceived();
     }
 
     private void OnDestroy()
