@@ -24,11 +24,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         Enemy.EnemyDead += ScoreUp;
+        EnemyManager.RoundEnd += Rest;
     }
 
     private void OnDisable()
     {
         Enemy.EnemyDead -= ScoreUp;
+        EnemyManager.RoundEnd -= Rest;
     }
 
     private void Start()
@@ -50,5 +52,16 @@ public class GameManager : MonoBehaviour
         currentRound = rounds[0];
         rounds.RemoveAt(0);
         NextRound.Invoke(currentRound);
+    }
+
+    private void Rest()
+    {
+        StartCoroutine(RestTime());
+    }
+
+    private IEnumerator RestTime()
+    {
+        yield return new WaitForSeconds(restTime);
+        StartRound();
     }
 }

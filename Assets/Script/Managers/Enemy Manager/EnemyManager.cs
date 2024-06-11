@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyManager : MonoBehaviour
 {
+    public static event Action RoundEnd;
+
     [SerializeField] float spawnRate;
 
     private int totalEnemyCount;
@@ -43,6 +47,10 @@ public class EnemyManager : MonoBehaviour
     private void EnemyKilled(int points)
     {
         killedEnemies++;
+        if(killedEnemies >= totalEnemyCount)
+        {
+            RoundEnd.Invoke();
+        }
         if (spawnSpecials) { return; }
         spawnSpecials = killedEnemies >= killsToSpawnSpecial;
         if (spawnSpecials)
@@ -79,6 +87,10 @@ public class EnemyManager : MonoBehaviour
 
         for (int i = 0; i < specialEnemyBuffer.Count; i++)
         {
+            if (spawnedEnemies >= totalEnemyCount)
+            {
+                break;
+            }
             if (EnemySpawnPoint.SpawnEnemy(specialEnemyBuffer[i]))
             {
                 specialEnemyBuffer.RemoveAt(i);
@@ -90,7 +102,7 @@ public class EnemyManager : MonoBehaviour
     private Enemy PickRandomEnemy()
     {
         if (currentRound.NormalEnemies.Length == 0) { return null; }
-        int index = Random.Range(0, currentRound.NormalEnemies.Length);
+        int index = UnityEngine.Random.Range(0, currentRound.NormalEnemies.Length);
         Enemy enemy = currentRound.NormalEnemies[index];
         return enemy;
     }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f729e3f0177d83143ba0fd93504e5459, type: 3}
-  m_Name: Round Data
+  m_Name: Round 1
   m_EditorClassIdentifier: 
   totalEnemyCount: 3
   killsToSpawnSpecial: 5
