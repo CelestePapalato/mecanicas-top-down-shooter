@@ -6,10 +6,10 @@ public class Item : MonoBehaviour
 {
     [SerializeField] PowerUp powerUp;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collider)
     {
         IBuffable buffable;
-        if(collision.gameObject.TryGetComponent<IBuffable>(out buffable))
+        if(collider.gameObject.TryGetComponent<IBuffable>(out buffable))
         {
             buffable.Accept(powerUp);
             Destroy(gameObject);

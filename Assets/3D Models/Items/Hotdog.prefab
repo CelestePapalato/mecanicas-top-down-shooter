@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2141259
+      value: -2.6818147
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.37166047
+      value: -2.5773678
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 126.31638
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -59,5 +59,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3830956123148986084}
   m_SourcePrefab: {fileID: 100100000, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
+--- !u!1 &4056721175791028269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 60e1ad0cf97d4f74aa47b6902e0204aa, type: 3}
+  m_PrefabInstance: {fileID: 3786744140668695932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &3830956123148986084
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056721175791028269}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4dcd0ed59bf7a3a419e6b29cbce8a010, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4dcd0ed59bf7a3a419e6b29cbce8a010, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
