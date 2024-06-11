@@ -24,6 +24,11 @@ public class Enemy : StateMachine
         itemSpawner = GetComponent<ItemSpawner>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void Update()
     {
         base.Update();

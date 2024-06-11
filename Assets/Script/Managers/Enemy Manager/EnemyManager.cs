@@ -46,6 +46,7 @@ public class EnemyManager : MonoBehaviour
 
     private void EnemyKilled(int points)
     {
+        if(currentRound == null) { return; }
         killedEnemies++;
         if(killedEnemies >= totalEnemyCount)
         {

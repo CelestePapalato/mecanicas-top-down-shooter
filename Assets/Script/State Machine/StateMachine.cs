@@ -4,28 +4,31 @@ using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
-    [SerializeField] protected Estado primerEstado;
+    [SerializeField] protected State primerEstado;
 
-    protected Estado estadoActual;
-    protected Estado primerEstadoBuffer;
-    protected Estado ultimoEstado;
+    protected State estadoActual;
+    protected State primerEstadoBuffer;
+    protected State ultimoEstado;
 
     protected virtual void Awake()
     {
         if (!primerEstado)
         {
-            primerEstado = GetComponent<Estado>();
+            primerEstado = GetComponent<State>();
         }
-
         if (primerEstado)
         {
             primerEstadoBuffer = primerEstado;
-            CambiarEstado(primerEstado);
         }
         else
         {
             Debug.LogWarning("El State Machine " + name + "no posee ni encuentra un Estado al que llamar");
         }
+    }
+
+    protected virtual void Start()
+    {
+        CambiarEstado(primerEstado);
     }
 
     protected virtual void Update()
@@ -44,7 +47,7 @@ public abstract class StateMachine : MonoBehaviour
         }
     }
 
-    public virtual void CambiarEstado(Estado nuevoEstado)
+    public virtual void CambiarEstado(State nuevoEstado)
     {
         estadoActual?.Salir();
         estadoActual = (nuevoEstado) ? nuevoEstado : primerEstado;
@@ -76,15 +79,20 @@ public abstract class StateMachine : MonoBehaviour
     }
 }
 
-public abstract class Estado : MonoBehaviour
+public abstract class State : MonoBehaviour
 {
     protected StateMachine personaje;
+    protected bool isActive = false;
 
     public virtual void Entrar(StateMachine personajeActual)
     {
         personaje = personajeActual;
+        isActive = true;
     }
-    public virtual void Salir() { }
+    public virtual void Salir()
+    {
+        isActive = false;
+    }
     public virtual void Actualizar() { }
     public virtual void ActualizarFixed() { }
     public virtual void DañoRecibido() { }
@@ -93,11 +101,13 @@ public abstract class Estado : MonoBehaviour
     {
         if (!personaje) { return; }
         personaje.CambiarEstado(null);
+        isActive = false;
     }
 
     private void OnDestroy()
     {
         if (!personaje) { return; }
         personaje.CambiarEstado(null);
+        isActive = false;
     }
 }

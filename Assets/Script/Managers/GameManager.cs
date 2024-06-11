@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         currentRound = rounds[0];
         rounds.RemoveAt(0);
         NextRound.Invoke(currentRound);
+        Debug.Log("Round started " + currentRound.name);
     }
 
     private void Rest()
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RestTime()
     {
+        Debug.Log("Next Round in " + restTime + "s.");
         yield return new WaitForSeconds(restTime);
         StartRound();
     }

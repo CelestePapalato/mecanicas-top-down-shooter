@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d47569aabb2874a8855e2b587a3210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 2
+  spawnTimer: 2.5
 --- !u!1 &69095543
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +247,6 @@ GameObject:
   - component: {fileID: 243005052}
   - component: {fileID: 243005055}
   - component: {fileID: 243005054}
-  - component: {fileID: 243005053}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -270,27 +269,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1782515048}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &243005053
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243005051}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &243005054
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -603,7 +581,6 @@ GameObject:
   - component: {fileID: 745375998}
   - component: {fileID: 745376001}
   - component: {fileID: 745376000}
-  - component: {fileID: 745375999}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -626,27 +603,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 28264465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &745375999
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745375997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &745376000
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1262,12 +1218,13 @@ GameObject:
   - component: {fileID: 1144264002}
   - component: {fileID: 1144264001}
   - component: {fileID: 1144264000}
+  - component: {fileID: 1144264004}
   m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1144264000
 BoxCollider:
@@ -1355,6 +1312,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144264004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144263999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 2cd5399ba2ad77046b337c50d2f9ec14, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &1153426860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,9 +2053,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1cd93fa3b05e146855b8a4511ecb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restTime: 0
+  restTime: 5
   rounds:
   - {fileID: 11400000, guid: bd1d83cf164048943842f758be4eb6ea, type: 2}
+  - {fileID: 11400000, guid: 65a3906ec6281a845a46f24ce40d8bb3, type: 2}
 --- !u!4 &1735986459
 Transform:
   m_ObjectHideFlags: 0
@@ -2323,6 +2312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healing
       objectReference: {fileID: 0}
+    - target: {fileID: 575961521651027842, guid: 665ff7cead434464f97aa09e13eb16c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4584979076798866897, guid: 665ff7cead434464f97aa09e13eb16c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.32
@@ -2420,6 +2413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Damage Power Up
       objectReference: {fileID: 0}
+    - target: {fileID: 7814168033194070003, guid: e8c27923160d28947839a3239ecde458, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2436,6 +2433,10 @@ PrefabInstance:
     - target: {fileID: 3568983124484659081, guid: a9d7b7438345d954cb17e9f1fee5de1d, type: 3}
       propertyPath: m_Name
       value: Enemy example
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568983124484659081, guid: a9d7b7438345d954cb17e9f1fee5de1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7391330575976364758, guid: a9d7b7438345d954cb17e9f1fee5de1d, type: 3}
       propertyPath: m_LocalPosition.x

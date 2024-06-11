@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 153611365947830794}
   - component: {fileID: 8839220410746508409}
   - component: {fileID: 3325398743469612901}
+  - component: {fileID: 4183105026200366742}
   m_Layer: 13
   m_Name: Enemy example
   m_TagString: Untagged
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad37ff9282c3ca74f9e901057ed00f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primerEstado: {fileID: 0}
+  primerEstado: {fileID: 3325398743469612901}
   points: 20
 --- !u!54 &153611365947830794
 Rigidbody:
@@ -175,6 +176,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b50b7cacd41944ca5b3b5a05ed1d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathUpdateRate: 0.3
+--- !u!195 &4183105026200366742
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568983124484659081}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8809074222493274936
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,5 +265,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd56a59620bbaf4cb24731b75633e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   invincibilityTime: 0
