@@ -27,11 +27,15 @@ public class ResultsScreen : MonoBehaviour
 
     private void OnWin()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         winCanvas.gameObject.SetActive(true);
     }
 
     private void OnLost()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         loseCanvas.gameObject.SetActive(true);
     }
 }

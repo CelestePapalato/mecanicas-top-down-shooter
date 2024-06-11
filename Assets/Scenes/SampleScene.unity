@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d47569aabb2874a8855e2b587a3210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 2.5
+  spawnTimer: 1.5
 --- !u!1 &69095543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,7 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efb4d10145dd754db1d40de3f50505b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 2
+  spawnRate: 1.5
 --- !u!1 &1650277833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3074,7 +3074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d47569aabb2874a8855e2b587a3210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 3
+  spawnTimer: 2
 --- !u!1 &1863084786
 GameObject:
   m_ObjectHideFlags: 0
