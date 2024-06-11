@@ -74,7 +74,10 @@ public class Health : MonoBehaviour, IDamageable, IHittable
         Vector3 position = transform.position;
         Vector3 impulseVector = position - damageDealer.Position;
         impulseVector.Normalize();
-        rb.AddForce(impulseVector * damageDealer.Impulse, ForceMode.Impulse);
+        if (rb)
+        {
+            rb.AddForce(impulseVector * damageDealer.Impulse, ForceMode.Impulse);
+        }
     }
 
     IEnumerator invincibilityEnabler()

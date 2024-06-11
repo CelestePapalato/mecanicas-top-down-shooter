@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Follow : State
+[RequireComponent(typeof(NavMeshAgent))]
+public class ChasePlayer : State
 {
     [SerializeField] float pathUpdateRate;
     NavMeshAgent agent;
@@ -18,15 +19,11 @@ public class Follow : State
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        if (!rb)
+        if (rb)
         {
-            rb = GetComponent<Rigidbody>();
+            rb.isKinematic = true;
         }
-        if(!agent)
-        {
-            agent = GetComponent<NavMeshAgent>();
-        }
-        rb.isKinematic = true;
+        if (!agent) { agent = GetComponent<NavMeshAgent>(); }
         agent.enabled = true;
         StartCoroutine(UpdateNavMeshTarget());
     }
@@ -34,8 +31,10 @@ public class Follow : State
     public override void Salir()
     {
         base.Salir();
-        rb.isKinematic = false;
-        agent.enabled = false;
+        if (rb)
+        {
+            rb.isKinematic = false;
+        }
         StopAllCoroutines();
     }
 
