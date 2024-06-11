@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
+    public event Action OnDamaged;
+
     [SerializeField] protected State primerEstado;
 
     protected State estadoActual;
@@ -71,12 +74,6 @@ public abstract class StateMachine : MonoBehaviour
         primerEstado = null;
         estadoActual?.Salir();
     }
-
-    private void OnDestroy()
-    {
-        primerEstado = null;
-        estadoActual?.Salir();
-    }
 }
 
 public abstract class State : MonoBehaviour
@@ -87,6 +84,7 @@ public abstract class State : MonoBehaviour
     public virtual void Entrar(StateMachine personajeActual)
     {
         personaje = personajeActual;
+        personaje.OnDamaged += DañoRecibido;
         isActive = true;
     }
     public virtual void Salir()
@@ -97,16 +95,21 @@ public abstract class State : MonoBehaviour
     public virtual void ActualizarFixed() { }
     public virtual void DañoRecibido() { }
 
+    private void OnEnable()
+    {
+        if (personaje)
+        {
+            personaje.OnDamaged += DañoRecibido;
+        }
+    }
+
     private void OnDisable()
     {
         if (!personaje) { return; }
-        personaje.CambiarEstado(null);
-        isActive = false;
-    }
-
-    private void OnDestroy()
-    {
-        if (!personaje) { return; }
+        if (personaje)
+        {
+            personaje.OnDamaged -= DañoRecibido;
+        }
         personaje.CambiarEstado(null);
         isActive = false;
     }
