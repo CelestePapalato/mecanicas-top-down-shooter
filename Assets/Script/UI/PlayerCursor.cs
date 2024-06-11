@@ -68,11 +68,16 @@ public class PlayerCursor : MonoBehaviour
     {
         var ray = _camera.ScreenPointToRay(_cursorTransform.position);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
+        if (!Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
         {
-            return hit.point;
+            return Vector3.zero;
         }
-        return Vector3.zero;
+        IDamageable damageable;
+        if (hit.transform.gameObject.TryGetComponent<IDamageable>(out damageable))
+        {
+            return hit.transform.position;
+        }
+        return hit.point;
     }
 
     public Vector3 GetWorldPoint(Vector2 screenPoint)
