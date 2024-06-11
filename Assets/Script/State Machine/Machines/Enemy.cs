@@ -33,7 +33,7 @@ public class Enemy : StateMachine
     {
         itemSpawner?.DropItem();
         Destroy(gameObject);
-        EnemyDead?.Invoke(points);
+        EnemyDead.Invoke(points);
         //GameManager.instance.AddPoints(points);
     }
 
