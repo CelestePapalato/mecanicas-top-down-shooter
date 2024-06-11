@@ -37,6 +37,7 @@ public class EnemyManager : MonoBehaviour
         totalEnemyCount = round.TotalEnemyCount;
         killsToSpawnSpecial = round.KillsToSpawnSpecial;
         spawnSpecials = false;
+        StartCoroutine(SpawnEnemies());
     }
 
     private void EnemyKilled(int points)
@@ -68,6 +69,7 @@ public class EnemyManager : MonoBehaviour
                 spawnedEnemies++;
             }
 
+            Debug.Log(spawnedEnemies);
         }
     }
 
@@ -80,6 +82,7 @@ public class EnemyManager : MonoBehaviour
             if (EnemySpawnPoint.SpawnEnemy(specialEnemyBuffer[i]))
             {
                 specialEnemyBuffer.RemoveAt(i);
+                spawnedEnemies++;
             }
         }
     }

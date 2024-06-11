@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,9 +10,11 @@ public class GameManager : MonoBehaviour
     public static event Action<Round> NextRound;
 
     [SerializeField] float restTime;
-    [SerializeField] Round[] rounds;
+    [SerializeField] List<Round> rounds = new List<Round>();
 
     private int score;
+
+    private Round currentRound;
 
     private void Awake()
     {
@@ -38,5 +41,14 @@ public class GameManager : MonoBehaviour
         points = Mathf.Max(points, 0);
         score += points;
         ScoreUpdate.Invoke(score);
+    }
+
+    [ContextMenu("Next Round")]
+    private void StartRound()
+    {
+        if (rounds.Count == 0) { return; }
+        currentRound = rounds[0];
+        rounds.RemoveAt(0);
+        NextRound.Invoke(currentRound);
     }
 }
