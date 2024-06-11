@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Impulse : State
+public class Impulse : MonoBehaviour
 {
     [SerializeField]
     [Range(1f, 15f)] float speedModifier;
@@ -12,32 +12,24 @@ public class Impulse : State
 
     NavMeshAgent agent;
 
-    float agentSpeed;
+    float originalSpeed;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        personaje = GetComponent<StateMachine>();
+        originalSpeed = agent.speed;
         Invoke(nameof(AddImpulse), speedModifierRate);
-    }
-
-    public override void Salir()
-    {
-        base.Salir();
-        agent.speed = agentSpeed;
     }
 
     private void AddImpulse()
     {
-        personaje?.CambiarEstado(this);
-        agentSpeed = agent.speed;
         agent.speed *= speedModifier;
         Invoke(nameof(StopImpulse), speedModifierLength);
     }
 
     private void StopImpulse()
     {
-        personaje?.CambiarEstado(null);
+        agent.speed = originalSpeed;
         Invoke(nameof(AddImpulse), speedModifierRate);
     }
 }
