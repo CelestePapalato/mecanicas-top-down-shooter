@@ -24,7 +24,7 @@ public class PointerFollower : MonoBehaviour
 
     void Update()
     {
-        if (!playerCursor) { return; }
+        if (!playerCursor || !player) { return; }
         Vector3 direction = playerCursor.GetWorldPoint();
         direction.y = player.position.y;
         direction -= player.position;

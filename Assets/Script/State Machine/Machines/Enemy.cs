@@ -44,6 +44,15 @@ public class Enemy : StateMachine
 
     protected override void Update()
     {
+        if (animator.GetBool("CanMove"))
+        {
+            agent.speed = originalSpeed;
+        }
+        else
+        {
+            agent.speed = 0;
+        }
+
         if (player)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);

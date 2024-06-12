@@ -29,7 +29,7 @@ public class Impulse : MonoBehaviour
 
     private void StopImpulse()
     {
-        agent.speed = originalSpeed;
+        agent.speed /= speedModifier;
         Invoke(nameof(AddImpulse), speedModifierRate);
     }
 }

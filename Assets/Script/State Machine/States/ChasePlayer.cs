@@ -42,11 +42,6 @@ public class ChasePlayer : State
         StopAllCoroutines();
     }
 
-    public override void Actualizar()
-    {
-        base.Actualizar();
-    }
-
     IEnumerator UpdateNavMeshTarget()
     {
         Player player = Player.Instance;
