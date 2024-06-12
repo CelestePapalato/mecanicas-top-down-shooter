@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7022914353559360854}
   - component: {fileID: 8395549119942592349}
   - component: {fileID: 3011794080512429213}
+  - component: {fileID: 6099577749730903347}
   m_Layer: 12
   m_Name: Healing
   m_TagString: Untagged
@@ -85,6 +86,19 @@ MonoBehaviour:
   _floorLayerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &6099577749730903347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575961521651027842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c792870af71e6554a8138dbb0c9f9ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeAlive: 5
 --- !u!1001 &3501174912421777766
 PrefabInstance:
   m_ObjectHideFlags: 0
