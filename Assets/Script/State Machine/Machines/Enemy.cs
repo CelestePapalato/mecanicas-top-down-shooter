@@ -10,12 +10,14 @@ public class Enemy : StateMachine
     public static event Action<int> EnemyDead;
     public UnityAction<Enemy> OnDead;
 
+    [SerializeField] float distanceToAttack;
     [SerializeField] int points;
 
     Health healthComponent;
     ItemSpawner itemSpawner;
     Animator animator;
     NavMeshAgent agent;
+    Player player;
 
     float originalSpeed;
 
@@ -37,10 +39,20 @@ public class Enemy : StateMachine
     protected override void Start()
     {
         base.Start();
+        player = Player.Instance;
     }
 
     protected override void Update()
     {
+        if (player)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance <= distanceToAttack)
+            {
+                animator.SetTrigger("Attack");
+            }
+        }
+
         float speedBlend = agent.speed / originalSpeed;
         animator?.SetFloat("Speed", speedBlend);
         base.Update();
