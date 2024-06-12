@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Stun : State
+public class Stun : MonoBehaviour
 {
     [SerializeField] float stunTime;
     [SerializeField] State nextState;
@@ -11,49 +11,50 @@ public class Stun : State
     [Range(0f, 1f)] float speedModifier;
 
     NavMeshAgent agent;
+    Health health;
 
     float originalSpeed;
+
+    bool stunApplied = false;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        personaje = GetComponent<StateMachine>();
-        if(personaje)
-        {
-            personaje.OnDamaged += StunStart;
-        }
+        originalSpeed = agent.speed;
+        health = GetComponent<Health>();
     }
 
-    public override void Entrar(StateMachine personajeActual)
+    private void StunStart(int health, int maxHealth)
     {
-        if (!personaje)
+        if (stunApplied)
         {
-            personaje = personajeActual;
+            CancelInvoke(nameof(StunEnd));
+            StunEnd();
         }
-        CancelInvoke(nameof(StunEnd));
+        agent.speed *= speedModifier;
+        stunApplied = true;
         Invoke(nameof(StunEnd), stunTime);
-    }
-
-    public override void Salir()
-    {
-        base.Salir();
-        agent.speed = originalSpeed;
-        CancelInvoke(nameof(StunEnd));
-    }
-
-    private void StunStart()
-    {
-        if (agent != null)
-        {
-            originalSpeed = agent.speed;
-            agent.speed *= speedModifier;
-        }
-        personaje.CambiarEstado(this);
     }
 
     private void StunEnd()
     {
-        agent.speed = originalSpeed;
-        personaje.CambiarEstado(nextState);
+        agent.speed /= speedModifier;
+        stunApplied = false;
+    }
+
+    private void OnEnable()
+    {
+        if (health)
+        {
+            health.Damaged += StunStart;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (health)
+        {
+            health.Damaged -= StunStart;
+        }
     }
 }
