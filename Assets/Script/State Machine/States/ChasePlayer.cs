@@ -10,13 +10,10 @@ public class ChasePlayer : State
     NavMeshAgent agent;
     Rigidbody rb;
 
-    float originalSpeed;
-
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        originalSpeed = agent.speed;
     }
 
     public override void Entrar(StateMachine personajeActual)
@@ -28,7 +25,6 @@ public class ChasePlayer : State
         }
         if (!agent) { agent = GetComponent<NavMeshAgent>(); }
         agent.enabled = true;
-        agent.speed = originalSpeed;
         StartCoroutine(UpdateNavMeshTarget());
     }
 
@@ -48,7 +44,10 @@ public class ChasePlayer : State
         while(isActive && player)
         {
             yield return new WaitForSeconds(pathUpdateRate);
-            agent.destination = player.transform.position;
+            if(agent.enabled)
+            {
+                agent.destination = player.transform.position;
+            }
         }
     }
 }

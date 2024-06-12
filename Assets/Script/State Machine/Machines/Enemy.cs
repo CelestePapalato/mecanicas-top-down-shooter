@@ -44,14 +44,7 @@ public class Enemy : StateMachine
 
     protected override void Update()
     {
-        if (animator.GetBool("CanMove"))
-        {
-            agent.speed = originalSpeed;
-        }
-        else
-        {
-            agent.speed = 0;
-        }
+        agent.enabled = animator.GetBool("CanMove");
 
         if (player)
         {
@@ -72,7 +65,6 @@ public class Enemy : StateMachine
         itemSpawner?.DropItem();
         Destroy(gameObject);
         EnemyDead.Invoke(points);
-        //GameManager.instance.AddPoints(points);
     }
 
     private void DamageReceived(int health, int maxHealth)
