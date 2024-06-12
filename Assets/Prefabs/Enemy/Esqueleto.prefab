@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 6233780197518808555}
   - component: {fileID: 7856337662836062842}
   - component: {fileID: 914018795855099251}
-  m_Layer: 13
+  - component: {fileID: 3616315719023316466}
+  m_Layer: 3
   m_Name: Esqueleto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +121,29 @@ MonoBehaviour:
   - {fileID: 8395549119942592349, guid: 665ff7cead434464f97aa09e13eb16c5, type: 3}
   _noDropProbability: 15
   _dropProbability: 0100000005000000
+--- !u!136 &3616315719023316466
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2976386310684457965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Height: 3.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6108892938067767534
 GameObject:
   m_ObjectHideFlags: 0

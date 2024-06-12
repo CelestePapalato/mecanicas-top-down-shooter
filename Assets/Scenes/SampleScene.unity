@@ -2082,7 +2082,7 @@ MonoBehaviour:
   _padding: 35
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 72
   _cursorSpeed: 1000
   _cursorTransform: {fileID: 529446828}
   _canvas: {fileID: 1321954409}
