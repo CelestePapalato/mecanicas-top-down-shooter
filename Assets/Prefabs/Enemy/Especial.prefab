@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primerEstado: {fileID: 6233780197518808555}
-  distanceToAttack: 2
+  distanceToAttack: 2.5
   points: 20
 --- !u!114 &6233780197518808555
 MonoBehaviour:
@@ -135,7 +135,7 @@ MonoBehaviour:
   _itemList:
   - {fileID: 7702758823543487627, guid: e8c27923160d28947839a3239ecde458, type: 3}
   - {fileID: 8395549119942592349, guid: 665ff7cead434464f97aa09e13eb16c5, type: 3}
-  _noDropProbability: 7
+  _noDropProbability: 5
   _dropProbability: 0800000003000000
 --- !u!136 &3616315719023316466
 CapsuleCollider:
