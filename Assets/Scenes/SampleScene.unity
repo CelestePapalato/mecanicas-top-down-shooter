@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d47569aabb2874a8855e2b587a3210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 2
+  spawnTimer: 1
 --- !u!1 &69095543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,7 +2082,7 @@ MonoBehaviour:
   _padding: 35
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8264
   _cursorSpeed: 1000
   _cursorTransform: {fileID: 529446828}
   _canvas: {fileID: 1321954409}
@@ -2925,7 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efb4d10145dd754db1d40de3f50505b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1.5
+  spawnRate: 0.7
 --- !u!1 &1650277833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,6 +3269,8 @@ MonoBehaviour:
   rounds:
   - {fileID: 11400000, guid: bd1d83cf164048943842f758be4eb6ea, type: 2}
   - {fileID: 11400000, guid: 65a3906ec6281a845a46f24ce40d8bb3, type: 2}
+  - {fileID: 11400000, guid: 9754811349e68e6468a5cf7f76a29d8f, type: 2}
+  - {fileID: 11400000, guid: c49c984527f16064eb86d7ddb20d0f6c, type: 2}
 --- !u!4 &1735986459
 Transform:
   m_ObjectHideFlags: 0
@@ -3363,7 +3365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d47569aabb2874a8855e2b587a3210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 2
+  spawnTimer: 1
 --- !u!1 &1863084786
 GameObject:
   m_ObjectHideFlags: 0

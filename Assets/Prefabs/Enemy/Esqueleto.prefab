@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7856337662836062842}
   - component: {fileID: 914018795855099251}
   - component: {fileID: 3616315719023316466}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: Esqueleto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePoints: 1
-  impulse: 5
+  impulse: 0
 --- !u!1 &6566856389615769187
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd56a59620bbaf4cb24731b75633e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 4
   invincibilityTime: 0
 --- !u!1001 &2800836487714948337
 PrefabInstance:

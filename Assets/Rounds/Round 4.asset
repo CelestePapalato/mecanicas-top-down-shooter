@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f729e3f0177d83143ba0fd93504e5459, type: 3}
-  m_Name: Round 2
+  m_Name: Round 4
   m_EditorClassIdentifier: 
-  totalEnemyCount: 10
-  killsToSpawnSpecial: 2
+  totalEnemyCount: 25
+  killsToSpawnSpecial: 0
   normalEnemies:
   - {fileID: 6876792706800186685, guid: 72912cda72e750640958a07b1ed88435, type: 3}
   specialEnemies:
+  - {fileID: 6876792706800186685, guid: a4f2280b79ccb18478c40a582f32f1c6, type: 3}
+  - {fileID: 6876792706800186685, guid: a4f2280b79ccb18478c40a582f32f1c6, type: 3}
   - {fileID: 6876792706800186685, guid: a4f2280b79ccb18478c40a582f32f1c6, type: 3}

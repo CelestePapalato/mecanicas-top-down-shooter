@@ -43,7 +43,12 @@ public class EnemyManager : MonoBehaviour
         totalEnemyCount = round.TotalEnemyCount;
         killsToSpawnSpecial = round.KillsToSpawnSpecial;
         spawnSpecials = false;
-        specialsAlreadySpawned = (killsToSpawnSpecial == 0 || currentRound.SpecialEnemies.Length == 0) ? true : false;
+        specialsAlreadySpawned = currentRound.SpecialEnemies.Length == 0;
+        if(killsToSpawnSpecial <= 0 && !specialsAlreadySpawned)
+        {
+            specialEnemyBuffer = currentRound.SpecialEnemies.ToList();
+            spawnSpecials = true;
+        }
         StartCoroutine(SpawnEnemies());
     }
 
