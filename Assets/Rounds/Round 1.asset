@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Round 1
   m_EditorClassIdentifier: 
   totalEnemyCount: 3
-  killsToSpawnSpecial: 5
+  killsToSpawnSpecial: 0
   normalEnemies:
   - {fileID: 6876792706800186685, guid: 72912cda72e750640958a07b1ed88435, type: 3}
   specialEnemies: []

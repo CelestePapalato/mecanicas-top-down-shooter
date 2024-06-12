@@ -15,8 +15,5 @@ MonoBehaviour:
   totalEnemyCount: 10
   killsToSpawnSpecial: 2
   normalEnemies:
-  - {fileID: 5900834624617883187, guid: a9d7b7438345d954cb17e9f1fee5de1d, type: 3}
-  specialEnemies:
-  - {fileID: 5900834624617883187, guid: a9d7b7438345d954cb17e9f1fee5de1d, type: 3}
-  - {fileID: 5900834624617883187, guid: a9d7b7438345d954cb17e9f1fee5de1d, type: 3}
-  - {fileID: 5900834624617883187, guid: a9d7b7438345d954cb17e9f1fee5de1d, type: 3}
+  - {fileID: 6876792706800186685, guid: 72912cda72e750640958a07b1ed88435, type: 3}
+  specialEnemies: []
