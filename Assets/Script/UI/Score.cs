@@ -32,13 +32,13 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.ScoreUpdate += UpdateScore;
-        GameManager.BestScoreUpdate += UpdateBestScore;
+        GameManager.OnScoreUpdate += UpdateScore;
+        GameManager.OnBestScoreUpdate += UpdateBestScore;
     }
 
     private void OnDisable()
     {
-        GameManager.ScoreUpdate -= UpdateScore;
-        GameManager.BestScoreUpdate -= UpdateBestScore;
+        GameManager.OnScoreUpdate -= UpdateScore;
+        GameManager.OnBestScoreUpdate -= UpdateBestScore;
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static event Action<int> ScoreUpdate;
-    public static event Action<int> BestScoreUpdate;
-    public static event Action<Round> NextRound;
+    public static event Action<int> OnScoreUpdate;
+    public static event Action<int> OnBestScoreUpdate;
+    public static event Action<Round> OnNextRound;
+    public static event Action<float> OnRest;
     public static event Action OnWin;
     public static event Action OnLost;
 
@@ -43,8 +44,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ScoreUpdate?.Invoke(score);
-        BestScoreUpdate?.Invoke(bestScore);
+        OnScoreUpdate?.Invoke(score);
+        OnBestScoreUpdate?.Invoke(bestScore);
         player = Player.Instance;
         player.OnDead += PlayerDead;
         Rest();
@@ -72,9 +73,9 @@ public class GameManager : MonoBehaviour
         if(score > bestScore)
         {
             bestScore = score;
-            BestScoreUpdate?.Invoke(score);
+            OnBestScoreUpdate?.Invoke(score);
         }
-        ScoreUpdate?.Invoke(score);
+        OnScoreUpdate?.Invoke(score);
     }
 
     [ContextMenu("Next Round")]
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
     {        
         currentRound = rounds[0];
         rounds.RemoveAt(0);
-        NextRound?.Invoke(currentRound);
+        OnNextRound?.Invoke(currentRound);
         Debug.Log("Round started " + currentRound.name);
     }
 
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
             OnWin.Invoke();
             return;
         }
+        OnRest?.Invoke(restTime);
         StartCoroutine(RestTime());
     }
 

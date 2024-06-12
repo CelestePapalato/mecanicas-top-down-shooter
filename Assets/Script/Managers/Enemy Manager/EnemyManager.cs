@@ -25,13 +25,13 @@ public class EnemyManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.NextRound += NextRound;
+        GameManager.OnNextRound += NextRound;
         Enemy.EnemyDead += EnemyKilled;
     }
 
     private void OnDisable()
     {
-        GameManager.NextRound -= NextRound;
+        GameManager.OnNextRound -= NextRound;
         Enemy.EnemyDead -= EnemyKilled;
     }
 
