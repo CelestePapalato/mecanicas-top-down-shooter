@@ -5,25 +5,40 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    TMP_Text text;
+    [SerializeField]
+    TMP_Text scoreText;
+    [SerializeField]
+    TMP_Text bestScoreText;
 
-    private void Awake()
+    private void UpdateScore(int score)
     {
-        text = GetComponent<TMP_Text>();
+        if (!scoreText)
+        {
+            Debug.LogWarning("No se ha referenciado un componente Text para el puntaje.");
+            return;
+        }
+        scoreText.text = score.ToString();
     }
 
-    private void UpdateScoreText(int score)
+    private void UpdateBestScore(int bestScore)
     {
-        text.text = score.ToString();
+        if (!bestScoreText)
+        {
+            Debug.LogWarning("No se ha referenciado un componente Text para el puntaje más alto.");
+            return;
+        }
+        bestScoreText.text = bestScore.ToString();
     }
 
     private void OnEnable()
     {
-        GameManager.ScoreUpdate += UpdateScoreText;
+        GameManager.ScoreUpdate += UpdateScore;
+        GameManager.BestScoreUpdate += UpdateBestScore;
     }
 
     private void OnDisable()
     {
-        GameManager.ScoreUpdate -= UpdateScoreText;
+        GameManager.ScoreUpdate -= UpdateScore;
+        GameManager.BestScoreUpdate -= UpdateBestScore;
     }
 }
