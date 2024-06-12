@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Stun : MonoBehaviour
 {
-    [SerializeField] float stunTime;
-    [SerializeField] State nextState;
+    [SerializeField] int damageNeeded;
+    [SerializeField] float stunLength;
     [SerializeField]
     [Range(0f, 1f)] float speedModifier;
 
@@ -15,17 +15,26 @@ public class Stun : MonoBehaviour
 
     float originalSpeed;
 
+    int lastAccumulatedDamage;
+
     bool stunApplied = false;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         originalSpeed = agent.speed;
-        health = GetComponent<Health>();
+        health = GetComponentInChildren<Health>();
     }
 
     private void StunStart(int health, int maxHealth)
     {
+        int previousAccumulatedDamage = lastAccumulatedDamage;
+        lastAccumulatedDamage = maxHealth - health;
+        bool newTreshold = previousAccumulatedDamage < lastAccumulatedDamage;
+        if ( lastAccumulatedDamage % damageNeeded != 0 || !newTreshold)
+        {
+            return;
+        }
         if (stunApplied)
         {
             CancelInvoke(nameof(StunEnd));
@@ -33,7 +42,7 @@ public class Stun : MonoBehaviour
         }
         agent.speed *= speedModifier;
         stunApplied = true;
-        Invoke(nameof(StunEnd), stunTime);
+        Invoke(nameof(StunEnd), stunLength);
     }
 
     private void StunEnd()

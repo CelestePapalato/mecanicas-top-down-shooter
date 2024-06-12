@@ -21,6 +21,8 @@ public class Weapon : MonoBehaviour, IBuffable
 
     private bool _canShoot = true;
 
+    private bool shooting = false;
+
     public void Accept(IBuff buff)
     {
         buff.Buff(this);
@@ -34,9 +36,19 @@ public class Weapon : MonoBehaviour, IBuffable
         }
     }
 
+    private void Update()
+    {
+        Shoot();
+    }
+
     void OnShoot()
     {
-        if (!_canShoot || Time.timeScale == 0)
+        shooting = !shooting;
+    }
+
+    void Shoot()
+    {
+        if (!_canShoot || Time.timeScale == 0 || !shooting)
         {
             return;
         }

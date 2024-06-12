@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primerEstado: {fileID: 6233780197518808555}
-  distanceToAttack: 1.7
-  points: 20
+  distanceToAttack: 1.45
+  points: 40
 --- !u!114 &6233780197518808555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cff18d2c21af294aa46d3d98bcfde8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunTime: 0.5
-  nextState: {fileID: 6233780197518808555}
-  speedModifier: 0.67
+  damageNeeded: 4
+  stunLength: 1.5
+  speedModifier: 0.33
 --- !u!114 &7932319514149748121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd56a59620bbaf4cb24731b75633e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 15
   invincibilityTime: 0
 --- !u!1001 &6464293427565457308
 PrefabInstance:

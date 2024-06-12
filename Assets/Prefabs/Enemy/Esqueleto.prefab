@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4538319978465979416}
   - component: {fileID: 6876792706800186685}
   - component: {fileID: 6233780197518808555}
-  - component: {fileID: 7856337662836062842}
   - component: {fileID: 914018795855099251}
   - component: {fileID: 3616315719023316466}
   m_Layer: 13
@@ -74,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primerEstado: {fileID: 6233780197518808555}
-  distanceToAttack: 1.2
+  distanceToAttack: 1
   points: 20
 --- !u!114 &6233780197518808555
 MonoBehaviour:
@@ -89,21 +88,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathUpdateRate: 0.2
---- !u!114 &7856337662836062842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2976386310684457965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cff18d2c21af294aa46d3d98bcfde8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunTime: 0.5
-  nextState: {fileID: 6233780197518808555}
-  speedModifier: 0.773
 --- !u!114 &914018795855099251
 MonoBehaviour:
   m_ObjectHideFlags: 0
