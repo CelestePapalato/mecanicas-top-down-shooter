@@ -13,25 +13,38 @@ public class Impulse : MonoBehaviour
     NavMeshAgent agent;
 
     float originalSpeed;
+    float originalAngularSpeed;
+
+    bool addedSpeed = false;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         originalSpeed = agent.speed;
+        originalAngularSpeed = agent.angularSpeed;
         Invoke(nameof(AddImpulse), speedModifierRate);
     }
 
     private void AddImpulse()
     {
+        if(addedSpeed)
+        {
+            CancelInvoke(nameof(StopImpulse));
+            StopImpulse();
+        }
         agent.speed *= speedModifier;
+        agent.angularSpeed *= speedModifierRate;
+        addedSpeed = true;
         Invoke(nameof(StopImpulse), speedModifierLength);
     }
 
     private void StopImpulse()
     {
-        if(agent.speed > originalSpeed)
+        if(addedSpeed)
         {
             agent.speed /= speedModifier;
+            agent.angularSpeed /= speedModifierRate;
+            addedSpeed = false;
         }
         Invoke(nameof(AddImpulse), speedModifierRate);
     }
