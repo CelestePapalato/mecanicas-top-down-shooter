@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primerEstado: {fileID: 6233780197518808555}
-  distanceToAttack: 1.45
+  distanceToAttack: 1.2
   points: 40
 --- !u!114 &6233780197518808555
 MonoBehaviour:
