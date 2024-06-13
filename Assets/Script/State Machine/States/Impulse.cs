@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class Impulse : MonoBehaviour
 {
     [SerializeField]
+    [Range(0f, 360f)] float newAngularSpeed;
+    [SerializeField]
     [Range(1f, 15f)] float speedModifier;
     [SerializeField] float speedModifierRate;
     [SerializeField] float speedModifierLength;
@@ -33,7 +35,7 @@ public class Impulse : MonoBehaviour
             StopImpulse();
         }
         agent.speed *= speedModifier;
-        agent.angularSpeed *= speedModifierRate;
+        agent.angularSpeed = newAngularSpeed;
         addedSpeed = true;
         Invoke(nameof(StopImpulse), speedModifierLength);
     }
@@ -43,7 +45,7 @@ public class Impulse : MonoBehaviour
         if(addedSpeed)
         {
             agent.speed /= speedModifier;
-            agent.angularSpeed /= speedModifierRate;
+            agent.angularSpeed = originalAngularSpeed;
             addedSpeed = false;
         }
         Invoke(nameof(AddImpulse), speedModifierRate);
