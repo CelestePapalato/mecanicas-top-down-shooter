@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b50b7cacd41944ca5b3b5a05ed1d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathUpdateRate: 0.2
+  pathUpdateRate: 0.1
 --- !u!114 &7856337662836062842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19724a7cfca99fb40ab55d310d950e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newAngularSpeed: 295
+  newAngularSpeed: 300
   speedModifier: 7
   speedModifierRate: 5
   speedModifierLength: 5
