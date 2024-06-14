@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Stun : MonoBehaviour
 {
-    [SerializeField] int damageNeeded;
+    [SerializeField] int hitsNeeded;
     [SerializeField] float stunLength;
     [SerializeField]
     [Range(0f, 1f)] float speedModifier;
@@ -15,7 +15,7 @@ public class Stun : MonoBehaviour
 
     float originalSpeed;
 
-    int lastAccumulatedDamage;
+    int hitsReceived = 0;
 
     bool stunApplied = false;
 
@@ -28,10 +28,13 @@ public class Stun : MonoBehaviour
 
     private void StunStart(int health, int maxHealth)
     {
-        int previousAccumulatedDamage = lastAccumulatedDamage;
-        lastAccumulatedDamage = maxHealth - health;
-        bool newTreshold = previousAccumulatedDamage < lastAccumulatedDamage;
-        if ( lastAccumulatedDamage % damageNeeded != 0 || !newTreshold)
+        if(hitsNeeded == 0)
+        {
+            Debug.LogWarning("No se puede dividir por cero. HitsNeeded no puede valer cero");
+            return;
+        }
+        hitsReceived++;
+        if ( hitsReceived % hitsNeeded != 0)
         {
             return;
         }
@@ -40,6 +43,7 @@ public class Stun : MonoBehaviour
             CancelInvoke(nameof(StunEnd));
             StunEnd();
         }
+        hitsReceived = 0;
         agent.speed *= speedModifier;
         stunApplied = true;
         Invoke(nameof(StunEnd), stunLength);
